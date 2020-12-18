@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: testowy
+    labels:
+        app: aplikacja
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: aplikacja
+    template:
+        metadata:
+            name: aplikacja
+            labels:
+                app: aplikacja
+        spec:
+            containers:
+            - name: aplikacja
+              image: karol54321/kuberneteslab1:latest
+              resources:
+                 requests:
+                   cpu: 100m
+                   memory: 128Mi
+              ports:
+              - containerPort: 80
